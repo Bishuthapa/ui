@@ -2,20 +2,73 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   background-color: #ffffff;
   color: #171717;
 }
 
-/* Service page layout based on Figma `service` frame:
-   - Frame width 1440px, padding 137px top/bottom & 112px left/right
-   - Inner content width 1218px centered
-*/
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-y {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtle-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wave-x {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(4px);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
 .service-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 137px 16px;
   background-color: #ffffff;
 }
@@ -23,33 +76,48 @@ body {
 .service-inner {
   width: 100%;
   max-width: 1218px;
+  height: 1473.25px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 193px;
 }
 
-/* Top row */
 .service-top {
   display: flex;
   flex-direction: row;
   gap: 202px;
   align-items: flex-start;
+  width: 1218px;
+  height: 306px;
 }
 
 .service-copy {
-  max-width: 625px;
+  width: 625px;
+  height: 306px;
   display: flex;
   flex-direction: column;
   gap: 58px;
+  align-items: flex-start;
 }
 
 .service-description {
   margin: 0;
-  font-family: "Oakes Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    "Oakes Grotesk",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   font-weight: 500;
   font-size: 36px;
   line-height: 1.4;
-  color: #262626; /* Light/Light-800 */
+  color: #262626;
+  animation: fade-up 700ms ease-out forwards;
+  width: 625px;
+  height: 200px;
 }
 
 .service-cta {
@@ -58,33 +126,56 @@ body {
   justify-content: center;
   padding: 14px 20px;
   border-radius: 100px;
-  background-color: #1253ed; /* vrit-color-primary-main */
-  color: #fafafa; /* Light/Light-50 */
+  background-color: #1253ed;
+  color: #fafafa;
   text-decoration: none;
-  font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    "Manrope",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.2;
   cursor: pointer;
+  animation: fade-up 700ms ease-out forwards;
+  animation-delay: 120ms;
+  opacity: 0;
 }
 
 .service-animated {
   width: 337px;
+  height: 242px;
   display: flex;
   flex-direction: column;
   gap: 35px;
+  align-items: flex-start;
 }
 
 .service-animated-column {
   display: flex;
   flex-direction: column;
+  animation: float-y 5s ease-in-out infinite;
 }
 
-/* Middle carousel strip */
+.service-animated-column:nth-child(2) {
+  justify-content: center;
+  animation-delay: 600ms;
+}
+
+.service-animated-column:nth-child(3) {
+  justify-content: flex-end;
+  animation-delay: 1200ms;
+}
 
 .service-carousel {
   display: flex;
   align-items: center;
+  width: 1218px;
+  height: 635.25px;
+  margin-top: 0;
 }
 
 .service-carousel-track {
@@ -94,6 +185,8 @@ body {
   gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
+  width: 1218px;
+  height: 569.25px;
 }
 
 .service-carousel-image {
@@ -128,13 +221,17 @@ body {
 
 .service-drag-text {
   position: absolute;
-  font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    "Manrope",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   font-weight: 600;
   font-size: 16px;
-  color: #262626; /* Light/Light-800 */
+  color: #262626;
 }
-
-/* Divider line */
 
 .service-divider {
   margin-top: 59px;
@@ -146,12 +243,9 @@ body {
   display: block;
 }
 
-/* Partners section */
-
 .service-partners {
   margin-top: 59px;
   width: 1058px;
-  max-width: 100%;
   height: 146px;
   position: relative;
 }
@@ -162,7 +256,13 @@ body {
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    "Manrope",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   font-weight: 700;
   font-size: 22px;
   line-height: 1.5;
@@ -183,12 +283,6 @@ body {
   width: auto;
   height: auto;
 }
-
-/* ------------------------------- */
-/* Course frame                    */
-/* Figma: Course frame (node 2:1346)
-   https://www.figma.com/design/3AHUPAtC5IDpOWjv2BL1S4/Frontend-Task?node-id=2-1346
-*/
 
 .course-wrapper {
   display: flex;
@@ -214,48 +308,288 @@ body {
 
 .course-subtitle {
   margin: 0;
-  font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    "Outfit",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 1.26;
   color: #414141;
+  animation: fade-up 600ms ease-out forwards;
 }
 
 .course-title {
   margin: 0;
-  font-family: "Nohemi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    "Nohemi",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   font-weight: 700;
   font-size: 32px;
   line-height: 1.2;
   color: #1da077;
+  animation: fade-up 700ms ease-out forwards;
+  animation-delay: 120ms;
+  opacity: 0;
 }
 
-.course-stats-row {
+.course-title-highlight {
+  color: #21a267;
+}
+
+.course-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 32px;
 }
 
-.course-stat-card {
+.course-card {
   position: relative;
   width: 280px;
   height: 461px;
   border-radius: 32px;
-  background-color: #c33241; /* base red from Figma */
+  background-color: #fdecee;
   overflow: hidden;
   padding: 40px 32px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: #c33241;
+  animation: fade-up 700ms ease-out forwards;
+  opacity: 0;
+}
+
+.course-card-primary {
+  width: 592px;
+  background-color: #c33241;
   color: #f9ebec;
 }
 
-.course-stat-card--active {
-  width: 592px;
+.course-cards .course-card:nth-child(1) {
+  animation-delay: 100ms;
+}
+
+.course-cards .course-card:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+.course-cards .course-card:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+.course-card-primary-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.course-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family:
+    "Outfit",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #f9ebec;
+  text-decoration: none;
+}
+
+
+.course-card-link:hover .course-card-link-icon {
+  animation: wave-x 600ms ease-in-out infinite;
+}
+
+.course-card-link-icon {
+  font-size: 16px;
+}
+
+.course-card-icons-row {
+  display: flex;
+  gap: 32px;
+  margin-top: 80px;
+}
+
+.course-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.course-card-primary-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-top: auto;
+}
+
+.course-card-primary-count {
+  font-family:
+    "Nohemi",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 700;
+  font-size: 150px;
+  line-height: 1.2;
+}
+
+.course-card-plus {
+  font-size: 64px;
+  vertical-align: top;
+}
+
+.course-card-primary-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.course-card-primary-title {
+  font-family:
+    "Outfit",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.course-card-primary-body {
+  font-family:
+    "Outfit",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.course-card-secondary {
+  width: 280px;
+  height: 461px;
+  border-radius: 32px;
+  background-color: #fdecee;
+  color: #c33241;
+}
+
+.course-card-secondary-inner {
+  width: 280;
+  height: 466;
+  angle: 0 deg;
+  opacity: 1;
+  border-radius: 32px;
+}
+
+.course-card-vertical {
+   
+  height: calc(100% - 146px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.course-card-vertical-title {
+  font-family: Outfit;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+
+.course-card-vertical-body {
+  font-family:
+    "Outfit",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.course-card-course-card-secondary {
+  width: 280;
+  height: 461;
+  angle: 0 deg;
+  opacity: 1;
+  border-radius: 32px;
+}
+
+.course-card-secondary-count {
+  position: absolute;
+  font: bold;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  align-items: flex-end;
+  line-height: 200%;
+  gap: 4px;
+  font-family: Nohemi;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 150px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.course-card-secondary-number {
+  font-family:
+    "Nohemi",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font: bold;
+  text-align: center;
+  font-weight: 700;
+  font-size: 150px;
+  line-height: 1.2;
+}
+
+.course-card-secondary-plus {
+  font-family:
+    "Nohemi",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.2;
 }
 
 .course-stat-dot {
@@ -278,7 +612,12 @@ body {
 }
 
 .course-stat-count {
-  font-family: "Nohemi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    "Nohemi",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   font-weight: 700;
   font-size: 150px;
@@ -286,7 +625,12 @@ body {
 }
 
 .course-stat-label {
-  font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    "Outfit",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   font-weight: 600;
   font-size: 18px;
@@ -302,7 +646,12 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    "Outfit",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   font-weight: 600;
   font-size: 18px;
@@ -314,12 +663,30 @@ body {
   font-size: 16px;
 }
 
+.course-stats-row
+  .course-stat-card:nth-child(1)
+  .course-stat-link:hover
+  .course-stat-link-icon {
+  animation: wave-x 600ms ease-in-out infinite;
+}
+
+.course-stats-row .course-stat-card:nth-child(1) .course-stat-footer {
+  position: absolute;
+  top: 40px;
+  right: 32px;
+}
+
 .course-stat-badge {
   position: absolute;
   right: 32px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: "Nohemi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    "Nohemi",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   font-weight: 700;
   font-size: 64px;
@@ -352,7 +719,6 @@ body {
     min-height: 280px;
   }
 }
-/* Responsiveness */
 
 @media (max-width: 1024px) {
   .service-wrapper {

@@ -1,26 +1,394 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #ffffff;
+  color: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Service page layout based on Figma `service` frame:
+   - Frame width 1440px, padding 137px top/bottom & 112px left/right
+   - Inner content width 1218px centered
+*/
+
+.service-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 137px 16px;
+  background-color: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.service-inner {
+  width: 100%;
+  max-width: 1218px;
+  display: flex;
+  flex-direction: column;
+  gap: 193px;
+}
+
+/* Top row */
+.service-top {
+  display: flex;
+  flex-direction: row;
+  gap: 202px;
+  align-items: flex-start;
+}
+
+.service-copy {
+  max-width: 625px;
+  display: flex;
+  flex-direction: column;
+  gap: 58px;
+}
+
+.service-description {
+  margin: 0;
+  font-family: "Oakes Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.4;
+  color: #262626; /* Light/Light-800 */
+}
+
+.service-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+  border-radius: 100px;
+  background-color: #1253ed; /* vrit-color-primary-main */
+  color: #fafafa; /* Light/Light-50 */
+  text-decoration: none;
+  font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.service-animated {
+  width: 337px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.service-animated-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Middle carousel strip */
+
+.service-carousel {
+  display: flex;
+  align-items: center;
+}
+
+.service-carousel-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.service-carousel-image {
+  flex: 0 0 auto;
+  width: 1012px;
+  height: auto;
+  border-radius: 21px;
+  object-fit: cover;
+}
+
+.service-drag-pill {
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 132px;
+  height: 132px;
+  border-radius: 999px;
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.service-drag-circle {
+  width: 132px;
+  height: 132px;
+  border-radius: 999px;
+  background-color: #d9d9d9;
+}
+
+.service-drag-text {
+  position: absolute;
+  font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #262626; /* Light/Light-800 */
+}
+
+/* Divider line */
+
+.service-divider {
+  margin-top: 59px;
+}
+
+.service-divider img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Partners section */
+
+.service-partners {
+  margin-top: 59px;
+  width: 1058px;
+  max-width: 100%;
+  height: 146px;
+  position: relative;
+}
+
+.service-partners-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #171717;
+}
+
+.service-partners-logos {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.service-partners-logos img {
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+/* ------------------------------- */
+/* Course frame                    */
+/* Figma: Course frame (node 2:1346)
+   https://www.figma.com/design/3AHUPAtC5IDpOWjv2BL1S4/Frontend-Task?node-id=2-1346
+*/
+
+.course-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 100px 16px;
+  background-color: #ffffff;
+}
+
+.course-content {
+  width: 100%;
+  max-width: 1216px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.course-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 640px;
+}
+
+.course-subtitle {
+  margin: 0;
+  font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.26;
+  color: #414141;
+}
+
+.course-title {
+  margin: 0;
+  font-family: "Nohemi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  color: #1da077;
+}
+
+.course-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.course-stat-card {
+  position: relative;
+  width: 280px;
+  height: 461px;
+  border-radius: 32px;
+  background-color: #c33241; /* base red from Figma */
+  overflow: hidden;
+  padding: 40px 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #f9ebec;
+}
+
+.course-stat-card--active {
+  width: 592px;
+}
+
+.course-stat-dot {
+  position: absolute;
+  width: 596px;
+  height: 596px;
+  border-radius: 50%;
+  background-color: #f9ebec;
+  opacity: 0.18;
+  top: -71px;
+  left: -122px;
+}
+
+.course-stat-main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  z-index: 1;
+}
+
+.course-stat-count {
+  font-family: "Nohemi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 700;
+  font-size: 150px;
+  line-height: 1.2;
+}
+
+.course-stat-label {
+  font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #f9ebec;
+}
+
+.course-stat-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.course-stat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #f9ebec;
+  text-decoration: none;
+}
+
+.course-stat-link-icon {
+  font-size: 16px;
+}
+
+.course-stat-badge {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Nohemi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: #ffffff;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .course-stat-card--active {
+    width: 100%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 640px) {
+  .course-wrapper {
+    padding: 64px 16px;
+  }
+
+  .course-subtitle {
+    font-size: 20px;
+  }
+
+  .course-title {
+    font-size: 26px;
+  }
+
+  .course-stat-card {
+    width: 100%;
+    height: auto;
+    min-height: 280px;
+  }
+}
+/* Responsiveness */
+
+@media (max-width: 1024px) {
+  .service-wrapper {
+    padding: 80px 16px;
+  }
+
+  .service-top {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .service-animated {
+    width: 100%;
+    max-width: 337px;
+  }
+
+  .service-carousel-image {
+    width: 80vw;
+    max-width: 1012px;
+  }
+
+  .service-partners {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-wrapper {
+    padding: 48px 16px;
+  }
+
+  .service-description {
+    font-size: 24px;
+  }
+
+  .service-inner {
+    gap: 96px;
+  }
 }

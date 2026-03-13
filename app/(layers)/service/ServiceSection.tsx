@@ -11,9 +11,7 @@ export default function ServiceSection() {
   return (
     <section className="service-wrapper">
       <div className="service-inner">
-        {/* Top main row */}
         <div className="service-top">
-          {/* Left copy & CTA */}
           <div className="service-copy">
             <p className="service-description">
               Experience our expert solutions tailored to enhance your business
@@ -24,7 +22,6 @@ export default function ServiceSection() {
             </Link>
           </div>
 
-          {/* Right animated columns */}
           <div className="service-animated">
             <div className="service-animated-column">
               <Image
@@ -54,7 +51,6 @@ export default function ServiceSection() {
           </div>
         </div>
 
-        {/* Middle carousel-like image strip */}
         <div className="service-carousel">
           <div className="service-carousel-track">
             <Image
@@ -87,7 +83,6 @@ export default function ServiceSection() {
               className="service-carousel-image"
             />
 
-            {/* Drag pill overlay */}
             <div className="service-drag-pill">
               <div className="service-drag-circle" />
               <span className="service-drag-text">Drag</span>
@@ -95,7 +90,6 @@ export default function ServiceSection() {
           </div>
         </div>
 
-        {/* Divider line under hero */}
         <div className="service-divider">
           <Image
             src="/service-hero-side.svg"
@@ -105,7 +99,6 @@ export default function ServiceSection() {
           />
         </div>
 
-        {/* Our Partners row */}
         <div className="service-partners">
           <h2 className="service-partners-title">Our Partners</h2>
           <div className="service-partners-logos">
